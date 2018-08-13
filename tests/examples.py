@@ -56,7 +56,7 @@ def complete_example():
                 {
                     "name": "all",
                     "help": "check every values is true",
-                    "func": all
+                    "func": all,
                 },
                 {
                     "name": ["sum", "s"],
@@ -72,7 +72,7 @@ def complete_example():
                         },
                         {"name": "--name", "nargs": "?"},
                     ],
-                }
+                },
             ],
         },
     }
@@ -86,8 +86,7 @@ def name_or_flags():
         "prog": "sti",
         "arguments": [{"name": ["-f", "--foo"]}, {"name": "bar"}],
     }
-    parser = cli(data)
-    return parser
+    return data
 
 
 def compose_clis_using_parents():
@@ -129,15 +128,57 @@ def using_formatter_class():
             """
         ),
     }
-    parser = cli(data)
-    return parser
+    return data
 
 
 def prefix_chars():
     data = {
         "prog": "PROG",
-        "prefix_chars": "-+",
-        "arguments": [{"name": "+f"}, {"name": "++bar"}],
+        "prefix_chars": "+",
+        "arguments": [{"name": ["+f", "++foo"]}, {"name": "++bar"}],
     }
-    parser = cli(data)
-    return parser
+    return data
+
+
+def grouping_arguments():
+    data = {
+        "prog": "mycli",
+        "arguments": [
+            {
+                "name": "--new",
+                "help": "This does not belong to a group but its a long help",
+            },
+            {
+                "name": "--init",
+                "help": "This does not belong to a group but its a long help",
+            },
+            {
+                "name": "--run",
+                "group": "app",
+                "help": "This does not belong to a group",
+            },
+            {
+                "name": "--build",
+                "group": "app",
+                "help": "This does not belong to a group",
+            },
+            {
+                "name": ["--install", "--add"],
+                "group": "package",
+                "metavar": "package_name",
+                "nargs": "+",
+                "help": "This belongs to a group",
+            },
+            {
+                "name": "--remove",
+                "group": "package",
+                "help": "This belongs to a group",
+            },
+            {
+                "name": "--why",
+                "group": "package",
+                "help": "This belongs to a group",
+            },
+        ],
+    }
+    return data

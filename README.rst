@@ -411,7 +411,7 @@ Optional arguments
 Short options
 -------------
 
-Used to add short versions of the options
+Used to add short versions of the options.
 
 .. code-block:: python
 
@@ -423,6 +423,46 @@ Used to add short versions of the options
             }
         ]
     }
+
+
+Grouping
+--------
+
+This is only possible using arguments.
+
+Only affect the way the help gets displayed. You might be looking for subcommands.
+
+
+.. code-block:: python
+
+    data = {
+        "prog": "mycli",
+        "arguments": [
+            {
+                "name": "--save",
+                "group": "main",
+                "help": "This save belongs to the main group",
+            },
+            {
+                "name": "--remove",
+                "group": "main",
+                "help": "This remove belongs to the main group",
+            },
+        ],
+    }
+    parser = cli(data)
+    parser.print_help()
+
+::
+
+    usage: mycli [-h] [--save SAVE] [--remove REMOVE]
+
+    optional arguments:
+    -h, --help       show this help message and exit
+
+    main:
+    --save SAVE      This save belongs to the main group
+    --remove REMOVE  This remove belongs to the main group
 
 
 Combining Positional and Optional arguments
