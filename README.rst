@@ -449,15 +449,15 @@ Combining Positional and Optional arguments
     args = parser.parse_args()
     answer = args.square**2
     if args.verbose:
-        print("the square of {} equals {}".format(args.square, answer))
+        print(f"the square of {args.square} equals {answer}")
     else:
         print(answer)
 
 
 More Examples
-=============
+-------------
 
-Many examples from `argparse documentation <https://docs.python.org/3/library/argparse.htm>`_
+Many examples from `argparse documentation <https://docs.python.org/3/library/argparse.html>`_
 are covered in test/examples.py
 
 
