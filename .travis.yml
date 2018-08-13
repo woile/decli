@@ -10,3 +10,6 @@ install:
 
 script:
   - poetry run pytest -s --cov-report term-missing --cov=decli tests/
+
+after_success:
+  - codecov

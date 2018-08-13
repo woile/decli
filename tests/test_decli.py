@@ -27,7 +27,6 @@ def test_main_example_fails():
 def test_complete_example():
     parser = examples.complete_example()
     args = parser.parse_args("sum 1 2 3".split())
-    print(args)
     assert args.func(args.integers) == 6
 
 
