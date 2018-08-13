@@ -6,7 +6,7 @@ authors = ["Santiago Fraire <santiwilly@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">3.5"
+python = ">3.6"
 
 [tool.poetry.dev-dependencies]
 ipython = "^6.5"
@@ -16,6 +16,7 @@ flake8 = "^3.5"
 black = "^18.3-alpha.0"
 mypy = "^0.620.0"
 pytest-cov = "^2.5"
+pyparsing = "^2.2"
 
 
 [tool.black]

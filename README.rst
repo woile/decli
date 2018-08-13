@@ -4,6 +4,9 @@ Decli
 
 Minimal declarative cli tool.
 
+.. image:: https://img.shields.io/travis/woile/decli.svg?style=flat-square   :alt: Travis (.org)
+
+
 .. code-block:: python
 
     from decli import cli
