@@ -4,13 +4,21 @@ Decli
 
 Minimal declarative cli tool.
 
-.. image:: https://img.shields.io/travis/Woile/decli.svg?style=flat-square   :alt: Travis
+.. image:: https://img.shields.io/travis/Woile/decli.svg?style=flat-square
+    :alt: Travis
+    :target: https://travis-ci.org/Woile/decli
 
-.. image:: https://img.shields.io/codecov/c/github/Woile/decli.svg?style=flat-square   :alt: Codecov
+.. image:: https://img.shields.io/codecov/c/github/Woile/decli.svg?style=flat-square
+    :alt: Codecov
+    :target: https://codecov.io/gh/Woile/decli
 
-.. image:: https://img.shields.io/pypi/v/decli.svg?style=flat-square   :alt: PyPI
+.. image:: https://img.shields.io/pypi/v/decli.svg?style=flat-square
+    :alt: PyPI
+    :target: https://pypi.org/project/decli/
 
-.. image:: https://img.shields.io/pypi/pyversions/decli.svg?style=flat-square   :alt: PyPI - Python Version
+.. image:: https://img.shields.io/pypi/pyversions/decli.svg?style=flat-square
+    :alt: PyPI - Python Version
+    :target: https://pypi.org/project/decli/
 
 
 .. code-block:: python
