@@ -63,13 +63,15 @@ Minimal declarative cli tool.
 About
 =====
 
-Decli is minimal wrapper around **argparse**..
+Decli is minimal wrapper around **argparse**.
+
+It's useful when writing big applications that have many arguments and subcommands, this way it'll be more clear.
 
 It's a minimal library to rapidly create an interface separated from your app.
 
 It's possible to use any argument from **argparse** and it works really well with it.
 
-Forget about copy pasting the argparse function, if you are lazy like me, this library should be really handy!
+Forget about copy pasting the argparse functions, if you are lazy like me, this library should be really handy!
 
 Many cases were tested, but it's possible that not everything was covered, so if you find anything, please report it.
 
@@ -144,7 +146,7 @@ Accepted values:
 - dest - The name of the attribute to be added to the object returned by parse_args().
 
 
-`more info about arguments <https://docs.python.org/3/library/argparse.html#the-add-argument-method>`_
+More info about `arguments <https://docs.python.org/3/library/argparse.html#the-add-argument-method>`_
 
 Example:
 
@@ -185,7 +187,7 @@ Accepted values:
 - metavar - string presenting available sub-commands in help; by default it is None and presents sub-commands in form {cmd1, cmd2, ..}
 
 
-`more info about subcommands <https://docs.python.org/3/library/argparse.html#sub-commands>`_
+More info about `subcommands <https://docs.python.org/3/library/argparse.html#sub-commands>`_
 
 Func
 ~~~~
@@ -292,11 +294,171 @@ Subcommands
     args.func(args.integers)  # Runs the sum of the integers
 
 
+Minimal
+-------
+
+This app does nothing, but it's the min we can have:
+
+.. code-block:: python
+
+    from decli import cli
+
+    parser = cli({})
+    parser.print_help()
+
+::
+
+    usage: ipython [-h]
+
+    optional arguments:
+    -h, --help  show this help message and exit
+
+
+Positional arguments
+--------------------
+
+.. code-block:: python
+
+    from decli import cli
+
+    data = {
+        "arguments": [
+            {
+                "name": "echo"
+            }
+        ]
+    }
+    parser = cli(data)
+    args = parser.parse_args(["foo"])
+
+::
+
+    In [11]: print(args.echo)
+    foo
+
+
+Positional arguments with type
+------------------------------
+
+When a type is specified, the argument will be treated as that type, otherwise it'll fail.
+
+.. code-block:: python
+
+    from decli import cli
+
+    data = {
+        "arguments": [
+            {
+                "name": "square",
+                "type": int
+            }
+        ]
+    }
+    parser = cli(data)
+    args = parser.parse_args(["1"])
+
+::
+
+    In [11]: print(args.echo)
+    1
+
+Optional arguments
+------------------
+
+.. code-block:: python
+
+    from decli import cli
+
+    data = {
+        "arguments": [
+            {
+                "name": "--verbose",
+                "help": "increase output verbosity"
+            }
+        ]
+    }
+    parser = cli(data)
+    args = parser.parse_args(["--verbosity 1"])
+
+::
+
+    In [11]: print(args.verbosity)
+    1
+
+    In [15]: args = parser.parse_args([])
+
+    In [16]: args
+    Out[16]: Namespace(verbose=None)
+
+
+Short options
+-------------
+
+Used to add short versions of the options
+
+.. code-block:: python
+
+    data = {
+        "arguments": [
+            {
+                "name": ["-v", "--verbose"],
+                "help": "increase output verbosity"
+            }
+        ]
+    }
+
+
+Combining Positional and Optional arguments
+-------------------------------------------
+
+.. code-block:: python
+
+    data = {
+        "arguments": [
+            {
+                "name": "square",
+                "type": int,
+                "help": "display a square of a given number"
+            },
+            {
+                "name": ["-v", "--verbose"],
+                "action": "store_true",
+                "help": "increase output verbosity"
+            }
+        ]
+    }
+    parser = cli(data)
+
+    args = parser.parse_args()
+    answer = args.square**2
+    if args.verbose:
+        print("the square of {} equals {}".format(args.square, answer))
+    else:
+        print(answer)
+
+
 More Examples
 =============
 
 Many examples from `argparse documentation <https://docs.python.org/3/library/argparse.htm>`_
 are covered in test/examples.py
+
+
+Testing
+=======
+
+1. Clone the repo
+2. Install dependencies
+
+::
+
+    poetry install
+
+3. Run tests
+
+::
+
+    poetry run pytest -s --cov-report term-missing --cov=decli tests/
 
 
 Contributing
