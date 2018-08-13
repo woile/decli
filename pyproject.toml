@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "decli"
-version = "0.3.1"
+version = "0.3.2"
 description = "Minimal, easy-to-use, declarative cli tool"
 authors = ["Santiago Fraire <santiwilly@gmail.com>"]
 license = "MIT"
 readme = 'README.rst'
 
 [tool.poetry.dependencies]
-python = ">3.6"
+python = ">=3.6"
 
 [tool.poetry.dev-dependencies]
 ipython = "^6.5"
