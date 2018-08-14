@@ -225,6 +225,7 @@ Example:
         "description": "This app does something cool",
         "epilog": "And that's it",
         "subcommands": {
+            "title": "main",
             "commands": [
                 {
                     "name": "sum",
@@ -263,22 +264,7 @@ Subcommands
     data = {
         "prog": "myapp",
         "formatter_class": argparse.RawDescriptionHelpFormatter,
-        "description": "The software does this and that",
-        "epilog": "This is the epilooogpoe  ",
-        "arguments": [
-            {
-                "name": "--debug",
-                "action": "store_true",
-                "default": False,
-                "help": "use debug mode",
-            },
-            {
-                "name": ["-v", "--version"],
-                "action": "store_true",
-                "default": False,
-                "help": "get the installed version",
-            },
-        ],
+        "description": "The software has subcommands which you can use",
         "subcommands": {
             "title": "main",
             "description": "main commands",
