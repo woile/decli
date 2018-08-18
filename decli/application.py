@@ -1,11 +1,25 @@
 import argparse
+import logging
 from typing import Optional, Callable, Union
+from copy import deepcopy
 
 
-config = {"prefix_chars": "-", "groups": {}}
+config = None
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 
-def validate_arg_names(names: list) -> list:
+def init_config():
+    return {"prefix_chars": "-"}
+
+
+def ensure_list(name: Union[str, list]) -> list:
+    if isinstance(name, str):
+        name = [name]
+    return name
+
+
+def has_many_and_is_optional(names: list) -> list:
     """The arguments can have aliases only when they are optional.
 
     If this is not the case, then it raises an error.
@@ -22,24 +36,66 @@ def validate_arg_names(names: list) -> list:
     return names
 
 
-def ensure_list(name: Union[str, list]) -> list:
-    if isinstance(name, str):
-        name = [name]
-    return name
+def is_exclusive_group_or_not(arg: dict):
+    if "exclusive_group" in arg and "group" in arg:
+        msg = "choose group or exclusive_group not both."
+        raise ValueError(msg)
+
+
+def validate_args(args: list):
+    for arg in args:
+        arg["name"] = ensure_list(arg["name"])
+        has_many_and_is_optional(arg["name"])
+        is_exclusive_group_or_not(arg)
+        yield arg
+
+
+def get_or_create_group(
+    parser,
+    groups: dict,
+    title: Optional[str] = None,
+    description: Optional[str] = None,
+):
+    group_parser = groups.get(title)
+    if group_parser is None:
+        group_parser = parser.add_argument_group(title, description)
+        groups.update({title: group_parser})
+    return group_parser
+
+
+def get_or_create_exclusive_group(
+    parser, groups: dict, title: str = None, required=False
+):
+    group_parser = groups.get(title)
+    if group_parser is None:
+        group_parser = parser.add_mutually_exclusive_group(required=required)
+        groups.update({title: group_parser})
+
+    return group_parser
 
 
 def add_arguments(parser, args: list):
-    for arg in args:
-        name: list = validate_arg_names(ensure_list(arg.pop("name")))
-        group: str = arg.pop("group", None)
-        if group:
-            groups = config["groups"]
-            group_parser = groups.setdefault(
-                group, parser.add_argument_group(group)
+    groups = {}
+    exclusive_groups = {}
+
+    for arg in validate_args(args):
+        logger.debug("arg: %s", arg)
+
+        name: list = arg.pop("name")
+        group_title: Optional[str] = arg.pop("group", None)
+        exclusive_group_title: Optional[str] = arg.pop("exclusive_group", None)
+
+        _parser = parser
+        if exclusive_group_title:
+            logger.debug("Exclusive group: %s", exclusive_group_title)
+            _parser = get_or_create_exclusive_group(
+                parser, exclusive_groups, exclusive_group_title
             )
-            group_parser.add_argument(*name, **arg)
-        else:
-            parser.add_argument(*name, **arg)
+        elif group_title:
+            logger.debug("Group: %s", group_title)
+            _parser = get_or_create_group(parser, groups, group_title)
+
+        _parser.add_argument(*name, **arg)
 
 
 def add_subcommand(parser, command: dict):
@@ -60,7 +116,7 @@ def add_subcommand(parser, command: dict):
         add_arguments(command_parser, args)
 
 
-def add_subparser(parser, subcommand):
+def add_subparser(parser, subcommand: dict):
     commands: list = subcommand.pop("commands")
     subparser = parser.add_subparsers(**subcommand)
 
@@ -78,9 +134,11 @@ def add_parser(data: dict, parser_class: Callable, parents: Optional[list]):
     parser = parser_class(**data, parents=parents)
 
     if args:
+        logger.debug("Adding arguments...")
         add_arguments(parser, args)
 
     if subcommands:
+        logger.debug("Adding subcommands...")
         add_subparser(parser, subcommands)
 
     return parser
@@ -95,6 +153,10 @@ def cli(
 
     This is the entrypoint.
     """
+    global config
+    config = init_config()
+    data = deepcopy(data)
+
     if data.get("prefix_chars"):
         config.update({"prefix_chars": data.get("prefix_chars")})
 

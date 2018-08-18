@@ -250,6 +250,139 @@ Example:
     args = parser.parse_args(["sum 1 2 3".split()])
     args.func(args.integers)  # Runs the sum of the integers
 
+Groups
+------
+
+Used to group the arguments based on conceptual groups. This only affects the shown **help**, nothing else.
+
+Example:
+
+.. code-block:: python
+
+    data = {
+        "prog": "app",
+        "arguments": [
+            {"name": "foo", "help": "foo help", "group": "group1"},
+            {"name": "choo", "help": "choo help", "group": "group1"},
+            {"name": "--bar", "help": "bar help", "group": "group2"},
+        ]
+    }
+    parser = cli(data)
+    parser.print_help()
+
+::
+
+    usage: app [-h] [--bar BAR] foo choo
+
+    optional arguments:
+    -h, --help  show this help message and exit
+
+    group1:
+    foo         foo help
+    choo        choo help
+
+    group2:
+    --bar BAR   bar help
+
+
+Exclusive Groups
+----------------
+
+A mutually exclusive group allows to execute only one **optional** argument (starting with :code:`--`) from the group.
+If the condition is not met, it will show an error.
+
+Example:
+
+.. code-block:: python
+
+    data = {
+        "prog": "app",
+        "arguments": [
+            {"name": "--foo", "help": "foo help", "exclusive_group": "group1"},
+            {"name": "--choo", "help": "choo help", "exclusive_group": "group1"},
+            {"name": "--bar", "help": "bar help", "exclusive_group": "group1"},
+        ]
+    }
+    parser = cli(data)
+    parser.print_help()
+
+::
+
+    usage: app [-h] [--foo FOO | --choo CHOO | --bar BAR]
+
+    optional arguments:
+    -h, --help   show this help message and exit
+    --foo FOO    foo help
+    --choo CHOO  choo help
+    --bar BAR    bar help
+
+::
+
+    In [1]: parser.parse_args("--foo 1 --choo 2".split())
+
+    usage: app [-h] [--foo FOO | --choo CHOO | --bar BAR]
+    app: error: argument --choo: not allowed with argument --foo
+
+
+Groups and Exclusive groups
+---------------------------
+
+It is not possible to have groups inside exclusive groups with **decli**.
+
+**Decli** will prevent from doing this by raising a :code:`ValueError`.
+
+It is possible to accomplish it with argparse, but the help message generated will be broken and the
+exclusion won't work.
+
+Parents
+-------
+
+Sometimes, several cli share a common set of arguments.
+
+Rather than repeating the definitions of these arguments,
+one or more parent clis with all the shared arguments can be passed
+to :code:`parents=argument` to cli.
+
+More info about `parents <https://docs.python.org/3/library/argparse.html#parents>`_
+
+Example:
+
+.. code-block:: python
+
+    parent_foo_data = {
+        "add_help": False,
+        "arguments": [{"name": "--foo-parent", "type": int}],
+    }
+    parent_bar_data = {
+        "add_help": False,
+        "arguments": [{"name": "--bar-parent", "type": int}],
+    }
+    parent_foo_cli = cli(parent_foo_data)
+    parent_bar_cli = cli(parent_bar_data)
+
+    parents = [parent_foo_cli, parent_bar_cli]
+
+    data = {
+        "prog": "app",
+        "arguments": [
+            {"name": "foo"}
+        ]
+    }
+    parser = cli(data, parents=parents)
+    parser.print_help()
+
+::
+
+    usage: app [-h] [--foo-parent FOO_PARENT] [--bar-parent BAR_PARENT] foo
+
+    positional arguments:
+    foo
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    --foo-parent FOO_PARENT
+    --bar-parent BAR_PARENT
+
 
 Recipes
 =======
@@ -414,7 +547,7 @@ Used to add short versions of the options.
 Grouping
 --------
 
-This is only possible using arguments.
+This is only possible using **arguments**.
 
 Only affect the way the help gets displayed. You might be looking for subcommands.
 
@@ -447,6 +580,42 @@ Only affect the way the help gets displayed. You might be looking for subcommand
     -h, --help       show this help message and exit
 
     main:
+    --save SAVE      This save belongs to the main group
+    --remove REMOVE  This remove belongs to the main group
+
+
+Exclusive group
+---------------
+
+This is only possible using **optional arguments**.
+
+
+.. code-block:: python
+
+    data = {
+        "prog": "mycli",
+        "arguments": [
+            {
+                "name": "--save",
+                "exclusive_group": "main",
+                "help": "This save belongs to the main group",
+            },
+            {
+                "name": "--remove",
+                "exclusive_group": "main",
+                "help": "This remove belongs to the main group",
+            },
+        ],
+    }
+    parser = cli(data)
+    parser.print_help()
+
+::
+
+    usage: mycli [-h] [--save SAVE | --remove REMOVE]
+
+    optional arguments:
+    -h, --help       show this help message and exit
     --save SAVE      This save belongs to the main group
     --remove REMOVE  This remove belongs to the main group
 

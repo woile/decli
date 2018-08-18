@@ -47,7 +47,9 @@ def complete_example():
                 "action": "store_true",
                 "default": False,
                 "help": "get the installed version",
+                "group": "ops",
             },
+            {"name": "--save", "group": "ops"},
         ],
         "subcommands": {
             "title": "main",
@@ -179,6 +181,17 @@ def grouping_arguments():
                 "group": "package",
                 "help": "This belongs to a group",
             },
+        ],
+    }
+    return data
+
+
+def exclusive_group():
+    data = {
+        "prog": "app",
+        "arguments": [
+            {"name": "--install", "exclusive_group": "ops"},
+            {"name": "--purge", "exclusive_group": "ops"},
         ],
     }
     return data
