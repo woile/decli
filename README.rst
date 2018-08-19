@@ -527,6 +527,32 @@ Optional arguments
     Out[16]: Namespace(verbose=None)
 
 
+Flags
+-----
+
+Flags are a boolean only (True/False) subset of options.
+
+.. code-block:: python
+
+    from decli import cli
+
+    data = {
+        "arguments": [
+            {
+                "name": "--verbose",
+                "action": "store_true",  # defaults to False
+            },
+            {
+                "name": "--noisy",
+                "action": "store_false",  # defaults to True
+            }
+        ]
+    }
+    parser = cli(data)
+
+
+
+
 Short options
 -------------
 
