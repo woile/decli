@@ -11,7 +11,7 @@ python = ">=3.6"
 
 [tool.poetry.dev-dependencies]
 ipython = "^6.5"
-ipdb = "^0.11.0"
+ipdb = "^0.12"
 pytest = "^3.7"
 flake8 = "^3.5"
 black = "^18.3-alpha.0"
