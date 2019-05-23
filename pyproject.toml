@@ -16,7 +16,7 @@ pytest = "^3.7"
 flake8 = "^3.5"
 black = "^18.3-alpha.0"
 mypy = "^0.620.0"
-pytest-cov = "^2.5"
+pytest-cov = "^2.7"
 pyparsing = "^2.2"
 codecov = "^2.0"
 
