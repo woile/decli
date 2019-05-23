@@ -10,7 +10,7 @@ readme = 'README.rst'
 python = ">=3.6"
 
 [tool.poetry.dev-dependencies]
-ipython = "^6.5"
+ipython = "^7.5"
 ipdb = "^0.12"
 pytest = "^3.7"
 flake8 = "^3.5"
