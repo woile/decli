@@ -201,6 +201,7 @@ version = "0.6.1"
 [[package]]
 category = "dev"
 description = "More routines for operating on iterables, beyond itertools"
+marker = "python_version > \"2.7\""
 name = "more-itertools"
 optional = false
 python-versions = "*"
@@ -263,7 +264,7 @@ description = "plugin and hook calling mechanisms for python"
 name = "pluggy"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "0.7.1"
+version = "0.11.0"
 
 [[package]]
 category = "dev"
@@ -332,17 +333,21 @@ description = "pytest: simple powerful testing with Python"
 name = "pytest"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "3.7.1"
+version = "4.5.0"
 
 [package.dependencies]
 atomicwrites = ">=1.0"
 attrs = ">=17.4.0"
 colorama = "*"
-more-itertools = ">=4.0.0"
-pluggy = ">=0.7"
+pluggy = ">=0.9,<0.10 || >0.10,<1.0"
 py = ">=1.5.0"
 setuptools = "*"
 six = ">=1.10.0"
+wcwidth = "*"
+
+[package.dependencies.more-itertools]
+python = ">=2.8"
+version = ">=4.0.0"
 
 [[package]]
 category = "dev"
@@ -424,7 +429,7 @@ python-versions = "*"
 version = "0.1.7"
 
 [metadata]
-content-hash = "70c62bf15a3baa5c1188181058209cd3dabc4e561f6668ad7e1251fa878fd1a7"
+content-hash = "5ee21c45f8cd86e60912c03dc1c51e48638b632be563e7bbe940ce071f586997"
 python-versions = ">=3.6"
 
 [metadata.hashes]
@@ -454,7 +459,7 @@ mypy-extensions = ["37e0e956f41369209a3d5f34580150bcacfabaa57b33a15c0b25f4b5725e
 parso = ["35704a43a3c113cce4de228ddb39aab374b8004f4f2407d070b6a2ca784ce8a2", "895c63e93b94ac1e1690f5fdd40b65f07c8171e3e53cbd7793b5b96c0e0a7f24"]
 pexpect = ["2a8e88259839571d1251d278476f3eec5db26deb73a70be5ed5dc5435e418aba", "3fbd41d4caf27fa4a377bfd16fef87271099463e6fa73e92a52f92dfee5d425b"]
 pickleshare = ["84a9257227dfdd6fe1b4be1319096c20eb85ff1e82c7932f36efccfe1b09737b", "c9a2541f25aeabc070f12f452e1f2a8eae2abd51e1cd19e8430402bdf4c1d8b5"]
-pluggy = ["6e3836e39f4d36ae72840833db137f7b7d35105079aee6ec4a62d9f80d594dd1", "95eb8364a4708392bae89035f45341871286a333f749c3141c20573d2b3876e1"]
+pluggy = ["25a1bc1d148c9a640211872b4ff859878d422bccb59c9965e04eed468a0aa180", "964cedd2b27c492fbf0b7f58b3284a09cf7f99b0f715941fb24a439b3af1bd1a"]
 prompt-toolkit = ["11adf3389a996a6d45cc277580d0d53e8a5afd281d0c9ec71b28e6f121463780", "2519ad1d8038fd5fc8e770362237ad0364d16a7650fb5724af6997ed5515e3c1", "977c6583ae813a37dc1c2e1b715892461fcbdaa57f6fc62f33a528c4886c8f55"]
 ptyprocess = ["923f299cc5ad920c68f2bc0bc98b75b9f838b93b599941a6b63ddbc2476394c0", "d7cc528d76e76342423ca640335bd3633420dc1366f258cb31d05e865ef5ca1f"]
 py = ["3fd59af7435864e1a243790d322d763925431213b6b8529c6ca71081ace3bbf7", "e31fb2767eb657cbde86c454f02e99cb846d3cd9d61b318525140214fdc0e98e"]
@@ -462,7 +467,7 @@ pycodestyle = ["682256a5b318149ca0d2a9185d365d8864a768a28db66a84a2ea946bcc426766
 pyflakes = ["08bd6a50edf8cffa9fa09a463063c425ecaaf10d1eb0335a7e8b1401aef89e6f", "8d616a382f243dbf19b54743f280b80198be0bca3a5396f1d2e1fca6223e8805"]
 pygments = ["78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d", "dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"]
 pyparsing = ["1873c03321fc118f4e9746baf201ff990ceb915f433f23b395f5580d1840cb2a", "9b6323ef4ab914af344ba97510e966d64ba91055d6b9afa6b30799340e89cc03"]
-pytest = ["86a8dbf407e437351cef4dba46736e9c5a6e3c3ac71b2e942209748e76ff2086", "e74466e97ac14582a8188ff4c53e6cc3810315f342f6096899332ae864c1d432"]
+pytest = ["1a8aa4fa958f8f451ac5441f3ac130d9fc86ea38780dd2715e6d5c5882700b24", "b8bf138592384bd4e87338cb0f256bf5f615398a649d4bd83915f0e4047a5ca6"]
 pytest-cov = ["2b097cde81a302e1047331b48cadacf23577e431b61e9c6f49a1170bbe3d3da6", "e00ea4fdde970725482f1f35630d12f074e121a23801aabf2ae154ec6bdd343a"]
 requests = ["99dcfdaaeb17caf6e526f32b6a7b780461512ab3f1d992187801694cba42770c", "a84b8c9ab6239b578f22d1c21d51b696dcfe004032bb80ea832398d6909d7279"]
 six = ["70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9", "832dc0e10feb1aa2c68dcc57dbb658f1c7e65b9b61af69048abc87a2db00a0eb"]
