@@ -176,7 +176,7 @@ description = "IPython: Productive Interactive Computing"
 name = "ipython"
 optional = false
 python-versions = ">=3.5"
-version = "7.6.1"
+version = "7.7.0"
 
 [package.dependencies]
 appnope = "*"
@@ -488,7 +488,7 @@ python-versions = ">=2.7"
 version = "0.5.1"
 
 [metadata]
-content-hash = "8a0da67059af6f506ab7584cf1bd37fe85ff766a82cf64b19d126e1224ebcd23"
+content-hash = "ca6d50f94bf1ab5a87063ad75b64f7e69a1dc0410a5aff983253011262ad882b"
 python-versions = ">=3.6"
 
 [metadata.hashes]
@@ -510,7 +510,7 @@ flake8 = ["19241c1cbc971b9962473e4438a2ca19749a7dd002dd1a946eaba171b4114548", "8
 idna = ["156a6814fb5ac1fc6850fb002e0852d56c0c8d2531923a51032d1b70760e186e", "684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"]
 importlib-metadata = ["6dfd58dfe281e8d240937776065dd3624ad5469c835248219bd16cf2e12dbeb7", "cb6ee23b46173539939964df59d3d72c3e0c1b5d54b84f1d8a7e912fe43612db"]
 ipdb = ["dce2112557edfe759742ca2d0fee35c59c97b0cc7a05398b791079d78f1519ce"]
-ipython = ["11067ab11d98b1e6c7f0993506f7a5f8a91af420f7e82be6575fcb7a6ca372a0", "60bc55c2c1d287161191cc2469e73c116d9b634cff25fe214a43cba7cec94c79"]
+ipython = ["1d3a1692921e932751bc1a1f7bb96dc38671eeefdc66ed33ee4cbc57e92a410e", "537cd0176ff6abd06ef3e23f2d0c4c2c8a4d9277b7451544c6cbf56d1c79a83d"]
 ipython-genutils = ["72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8", "eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"]
 jedi = ["b409ed0f6913a701ed474a614a3bb46e6953639033e31f769ca7581da5bd1ec1", "c254b135fb39ad76e78d4d8f92765ebc9bf92cbc76f49e97ade1d5f5121e1f6f"]
 mccabe = ["ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42", "dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"]
