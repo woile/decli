@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "decli"
-version = "0.5.0"
+version = "0.5.1"
 description = "Minimal, easy-to-use, declarative cli tool"
 authors = ["Santiago Fraire <santiwilly@gmail.com>"]
 license = "MIT"
@@ -44,9 +44,9 @@ exclude = '''
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.5.0"
+version = "0.5.1"
 files = [
-    "src/__version__.py",
+    "decli/__init__.py:__version",
     "pyproject.toml:version"
 ]
 tag_format = "v$version"
