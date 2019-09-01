@@ -42,3 +42,11 @@ exclude = '''
 )/
 '''
 
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.5.0"
+files = [
+    "src/__version__.py",
+    "pyproject.toml:version"
+]
+tag_format = "v$version"
