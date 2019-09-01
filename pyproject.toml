@@ -12,7 +12,7 @@ python = ">=3.6"
 [tool.poetry.dev-dependencies]
 ipython = "^7.6"
 ipdb = "^0.12"
-pytest = "^5.0"
+pytest = "^5.1"
 flake8 = "^3.7"
 black = "^19.3b0"
 mypy = "^0.720"
