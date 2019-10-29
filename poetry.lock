@@ -45,13 +45,16 @@ description = "The uncompromising code formatter."
 name = "black"
 optional = false
 python-versions = ">=3.6"
-version = "19.3b0"
+version = "19.10b0"
 
 [package.dependencies]
 appdirs = "*"
 attrs = ">=18.1.0"
 click = ">=6.5"
+pathspec = ">=0.6,<1"
+regex = "*"
 toml = ">=0.9.4"
+typed-ast = ">=1.4.0"
 
 [[package]]
 category = "dev"
@@ -272,6 +275,14 @@ version = "0.5.0"
 
 [[package]]
 category = "dev"
+description = "Utility library for gitignore style pattern matching of file paths."
+name = "pathspec"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.6.0"
+
+[[package]]
+category = "dev"
 description = "Pexpect allows easy control of interactive console applications."
 marker = "python_version >= \"3.4\" and sys_platform != \"win32\" or sys_platform != \"win32\""
 name = "pexpect"
@@ -398,6 +409,14 @@ pytest = ">=3.6"
 
 [[package]]
 category = "dev"
+description = "Alternative regular expression module, to replace re."
+name = "regex"
+optional = false
+python-versions = "*"
+version = "2019.08.19"
+
+[[package]]
+category = "dev"
 description = "Python HTTP for Humans."
 name = "requests"
 optional = false
@@ -491,7 +510,7 @@ python-versions = ">=2.7"
 version = "0.5.1"
 
 [metadata]
-content-hash = "2b7bf6fe5de6c94c7a5c2bd07973150f9ec32c63c8a0469d2a96678e34fc839d"
+content-hash = "35854dc5e3665289c54609089ee7485f0b3c7090df4ff02135426d4ed1765013"
 python-versions = ">=3.6"
 
 [metadata.hashes]
@@ -500,7 +519,7 @@ appnope = ["5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0", "
 atomicwrites = ["240831ea22da9ab882b551b31d4225591e5e447a68c5e188db5b89ca1d487585", "a24da68318b08ac9c9c45029f4a10371ab5b20e4226738e150e6e7c571630ae6"]
 attrs = ["4b90b09eeeb9b88c35bc642cbac057e45a5fd85367b985bd2809c62b7b939265", "e0d0eb91441a3b53dab4d9b743eafc1ac44476296a2053b6ca3af0b139faf87b"]
 backcall = ["38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4", "bbbf4b1e5cd2bdb08f915895b51081c041bac22394fdfcfdfbe9f14b77c08bf2"]
-black = ["09a9dcb7c46ed496a9850b76e4e825d6049ecd38b611f1224857a79bd985a8cf", "68950ffd4d9169716bcb8719a56c07a2f4485354fec061cdd5910aa07369731c"]
+black = ["1b30e59be925fafc1ee4565e5e08abef6b03fe455102883820fe5ee2e4734e0b", "c2edb73a08e9e0e6f65a0e6af18b059b8b1cdd5bef997d7a0b181df93dc81539"]
 certifi = ["4c1d68a1408dd090d2f3a869aa94c3947cc1d967821d1ed303208c9f41f0f2f4", "b6e8b28b2b7e771a41ecdd12d4d43262ecab52adebbafa42c77d6b57fb6ad3a4"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
 click = ["29f99fc6125fbc931b758dc053b3114e55c77a6e4c6c3a2674a2dc986016381d", "f15516df478d5a56180fbf80e68f206010e6d160fc39fa508b65e035fd75130b"]
@@ -522,6 +541,7 @@ mypy = ["1521c186a3d200c399bd5573c828ea2db1362af7209b2adb1bb8532cea2fb36f", "31a
 mypy-extensions = ["37e0e956f41369209a3d5f34580150bcacfabaa57b33a15c0b25f4b5725e0812", "b16cabe759f55e3409a7d231ebd2841378fb0c27a5d1994719e340e4f429ac3e"]
 packaging = ["0c98a5d0be38ed775798ece1b9727178c4469d9c3b4ada66e8e6b7849f8732af", "9e1cbf8c12b1f1ce0bb5344b8d7ecf66a6f8a6e91bcb0c84593ed6d3ab5c4ab3"]
 parso = ["5052bb33be034cba784193e74b1cde6ebf29ae8b8c1e4ad94df0c4209bfc4826", "db5881df1643bf3e66c097bfd8935cf03eae73f4cb61ae4433c9ea4fb6613446"]
+pathspec = ["e285ccc8b0785beadd4c18e5708b12bb8fcf529a1e61215b3feff1d1e559ea5c"]
 pexpect = ["2a8e88259839571d1251d278476f3eec5db26deb73a70be5ed5dc5435e418aba", "3fbd41d4caf27fa4a377bfd16fef87271099463e6fa73e92a52f92dfee5d425b"]
 pickleshare = ["84a9257227dfdd6fe1b4be1319096c20eb85ff1e82c7932f36efccfe1b09737b", "c9a2541f25aeabc070f12f452e1f2a8eae2abd51e1cd19e8430402bdf4c1d8b5"]
 pluggy = ["0825a152ac059776623854c1543d65a4ad408eb3d33ee114dff91e57ec6ae6fc", "b9817417e95936bf75d85d3f8767f7df6cdde751fc40aed3bb3074cbcb77757c"]
@@ -534,6 +554,7 @@ pygments = ["78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d", 
 pyparsing = ["6f98a7b9397e206d78cc01df10131398f1c8b8510a2f4d97d9abd82e1aacdd80", "d9338df12903bbf5d65a0e4e87c2161968b10d2e489652bb47001d82a9b028b4"]
 pytest = ["27abc3fef618a01bebb1f0d6d303d2816a99aa87a5968ebc32fe971be91eb1e6", "58cee9e09242937e136dbb3dab466116ba20d6b7828c7620f23947f37eb4dae4"]
 pytest-cov = ["cc6742d8bac45070217169f5f72ceee1e0e55b0221f54bcf24845972d3a47f2b", "cdbdef4f870408ebdbfeb44e63e07eb18bb4619fae852f6e760645fa36172626"]
+regex = ["1e9f9bc44ca195baf0040b1938e6801d2f3409661c15fe57f8164c678cfc663f", "2079f83ac094b436a8078988e38af44286c67eb5a259becfc563e8a81cb34a11", "43dbcc90e1bd42d905abc8dac75a64768d4b621c9e01adfcd8a57df1af65793e", "587b62d48ca359d2d4f02d486f1f0aa9a20fbaf23a9d4198c4bed72ab2f6c849", "835ccdcdc612821edf132c20aef3eaaecfb884c9454fdc480d5887562594ac61", "93f6c9da57e704e128d90736430c5c59dd733327882b371b0cae8833106c2a21", "a46f27d267665016acb3ec8c6046ec5eae8cf80befe85ba47f43c6f5ec636dcd", "c5c8999b3a341b21ac2c6ec704cfcccbc50f1fedd61b6a8ee915ca7fd4b0a557", "d4d1829cf97632673aa49f378b0a2c3925acd795148c5ace8ef854217abbee89", "d96479257e8e4d1d7800adb26bf9c5ca5bab1648a1eddcac84d107b73dc68327", "f20f4912daf443220436759858f96fefbfc6c6ba9e67835fd6e4e9b73582791a", "f2b37b5b2c2a9d56d9e88efef200ec09c36c7f323f9d58d0b985a90923df386d", "fe765b809a1f7ce642c2edeee351e7ebd84391640031ba4b60af8d91a9045890"]
 requests = ["99dcfdaaeb17caf6e526f32b6a7b780461512ab3f1d992187801694cba42770c", "a84b8c9ab6239b578f22d1c21d51b696dcfe004032bb80ea832398d6909d7279"]
 six = ["70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9", "832dc0e10feb1aa2c68dcc57dbb658f1c7e65b9b61af69048abc87a2db00a0eb"]
 toml = ["8e86bd6ce8cc11b9620cb637466453d94f5d57ad86f17e98a98d1f73e3baab2d"]
