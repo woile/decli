@@ -165,7 +165,7 @@ description = "IPython-enabled pdb"
 name = "ipdb"
 optional = false
 python-versions = ">=2.7"
-version = "0.12.3"
+version = "0.13.1"
 
 [package.dependencies]
 setuptools = "*"
@@ -511,7 +511,7 @@ python-versions = ">=2.7"
 version = "0.5.1"
 
 [metadata]
-content-hash = "ecc9c916b5a067bdff60d83078cf245da32cdf10f167d8408c03db5f8e7ed296"
+content-hash = "90873307eaaf5101f994b9b2bcb60a4ca91e2faa8024a4e000cfa198bde5d067"
 python-versions = ">=3.6"
 
 [metadata.hashes]
@@ -532,7 +532,7 @@ entrypoints = ["589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19
 flake8 = ["45681a117ecc81e870cbf1262835ae4af5e7a8b08e40b944a8a6e6b895914cfb", "49356e766643ad15072a789a20915d3c91dc89fd313ccd71802303fd67e4deca"]
 idna = ["156a6814fb5ac1fc6850fb002e0852d56c0c8d2531923a51032d1b70760e186e", "684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"]
 importlib-metadata = ["6dfd58dfe281e8d240937776065dd3624ad5469c835248219bd16cf2e12dbeb7", "cb6ee23b46173539939964df59d3d72c3e0c1b5d54b84f1d8a7e912fe43612db"]
-ipdb = ["5d9a4a0e3b7027a158fc6f2929934341045b9c3b0b86ed5d7e84e409653f72fd"]
+ipdb = ["19c5996936609330a85ed355b7bd14bc18d976c7f0e512f26e0511ba9f637d47"]
 ipython = ["d9459e7237e2e5858738ff9c3e26504b79899b58a6d49e574d352493d80684c6", "f6689108b1734501d3b59c84427259fd5ac5141afe2e846cfa8598eb811886c9"]
 ipython-genutils = ["72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8", "eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"]
 jedi = ["b409ed0f6913a701ed474a614a3bb46e6953639033e31f769ca7581da5bd1ec1", "c254b135fb39ad76e78d4d8f92765ebc9bf92cbc76f49e97ade1d5f5121e1f6f"]
