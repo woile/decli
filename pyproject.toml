@@ -18,7 +18,7 @@ black = "^19.10b0"
 mypy = "^0.770"
 pytest-cov = "^2.9"
 pyparsing = "^2.4"
-codecov = "^2.0"
+codecov = "^2.1"
 
 
 [tool.black]
