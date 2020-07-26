@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.5.2 (2020-07-26)
+
+### Fix
+
+- **application**: add required subcommand support for python 3.6
+
 # 0.5.1
 
 ### Fixes
