@@ -163,3 +163,36 @@ class Test(unittest.TestCase):
 
         with pytest.raises(ValueError):
             cli(data)
+
+    def test_subcommand_required(self):
+        data = {
+            "prog": "cz",
+            "description": (
+                "Commitizen is a cli tool to generate conventional commits.\n"
+                "For more information about the topic go to "
+                "https://conventionalcommits.org/"
+            ),
+            "formatter_class": argparse.RawDescriptionHelpFormatter,
+            "arguments": [
+                {"name": "--debug", "action": "store_true", "help": "use debug mode"},
+                {
+                    "name": ["-n", "--name"],
+                    "help": "use the given commitizen (default: cz_conventional_commits)",
+                },
+            ],
+            "subcommands": {
+                "title": "commands",
+                "required": True,
+                "commands": [
+                    {
+                        "name": ["init"],
+                        "help": "init commitizen configuration",
+                    }
+                ]
+            }
+        }
+
+        parser = cli(data)
+        args = parser.parse_args(["-n", "cz_jira", "init"])
+        assert args.debug is False
+        assert args.name == "cz_jira"

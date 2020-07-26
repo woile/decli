@@ -118,7 +118,14 @@ def add_subcommand(parser, command: dict):
 
 def add_subparser(parser, subcommand: dict):
     commands: list = subcommand.pop("commands")
-    subparser = parser.add_subparsers(**subcommand)
+
+    # This design is for python 3.6 compatibility
+    if "required" in subcommand:
+        required = subcommand.pop("required")
+        subparser = parser.add_subparsers(**subcommand)
+        subparser.required = required
+    else:
+        subparser = parser.add_subparsers(**subcommand)
 
     for command in commands:
         add_subcommand(subparser, command)
