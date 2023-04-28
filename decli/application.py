@@ -4,7 +4,7 @@ from typing import Optional, Callable, Union
 from copy import deepcopy
 
 
-config = None
+config: dict = {}
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -64,7 +64,7 @@ def get_or_create_group(
 
 
 def get_or_create_exclusive_group(
-    parser, groups: dict, title: str = None, required=False
+    parser, groups: dict, title: Optional[str] = None, required=False
 ):
     group_parser = groups.get(title)
     if group_parser is None:
@@ -75,8 +75,8 @@ def get_or_create_exclusive_group(
 
 
 def add_arguments(parser, args: list):
-    groups = {}
-    exclusive_groups = {}
+    groups: dict = {}
+    exclusive_groups: dict = {}
 
     for arg in validate_args(args):
         logger.debug("arg: %s", arg)

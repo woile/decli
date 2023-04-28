@@ -15,7 +15,7 @@ ipdb = "^0.13"
 pytest = "^7.3.1"
 pytest-cov = "^4.0.0"
 black = "^23.3.0"
-mypy = "^0.921"
+mypy = "^1.2.0"
 codecov = "^2.1"
 ruff = "^0.0.263"
 
