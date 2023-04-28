@@ -4,10 +4,6 @@ Decli
 
 Minimal declarative cli tool.
 
-.. image:: https://img.shields.io/travis/Woile/decli.svg?style=flat-square
-    :alt: Travis
-    :target: https://travis-ci.org/Woile/decli
-
 .. image:: https://img.shields.io/codecov/c/github/Woile/decli.svg?style=flat-square
     :alt: Codecov
     :target: https://codecov.io/gh/Woile/decli
