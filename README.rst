@@ -678,8 +678,8 @@ Many examples from `argparse documentation <https://docs.python.org/3/library/ar
 are covered in test/examples.py
 
 
-Testing
-=======
+Contributing
+============
 
 1. Clone the repo
 2. Install dependencies
@@ -692,7 +692,7 @@ Testing
 
 ::
 
-    poetry run pytest -s --cov-report term-missing --cov=decli tests/
+    ./scripts/tests
 
 
 Contributing
