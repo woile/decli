@@ -28,13 +28,12 @@ ignore = [
 ]
 
 [tool.ruff.isort]
-known-first-party = ["commitizen", "tests"]
+known-first-party = ["decli", "tests"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.5.2"
-files = [
-    "decli/__init__.py:__version",
-    "pyproject.toml:version"
-]
 tag_format = "v$version"
+version_type = "pep440"
+version_provider = "poetry"
+update_changelog_on_bump = true
+major_version_zero = true
