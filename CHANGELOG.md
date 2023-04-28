@@ -1,5 +1,15 @@
 # Change Log
 
+## v0.6.0 (2023-04-28)
+
+### Feat
+
+- add py.typed
+
+### Fix
+
+- improve type hints
+
 ## v0.5.2 (2020-07-26)
 
 ### Fix
