@@ -188,8 +188,8 @@ class Test(unittest.TestCase):
                         "name": ["init"],
                         "help": "init commitizen configuration",
                     }
-                ]
-            }
+                ],
+            },
         }
 
         parser = cli(data)

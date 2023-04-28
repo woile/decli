@@ -4,10 +4,6 @@ Decli
 
 Minimal declarative cli tool.
 
-.. image:: https://img.shields.io/travis/Woile/decli.svg?style=flat-square
-    :alt: Travis
-    :target: https://travis-ci.org/Woile/decli
-
 .. image:: https://img.shields.io/codecov/c/github/Woile/decli.svg?style=flat-square
     :alt: Codecov
     :target: https://codecov.io/gh/Woile/decli
@@ -682,8 +678,8 @@ Many examples from `argparse documentation <https://docs.python.org/3/library/ar
 are covered in test/examples.py
 
 
-Testing
-=======
+Contributing
+============
 
 1. Clone the repo
 2. Install dependencies
@@ -696,7 +692,7 @@ Testing
 
 ::
 
-    poetry run pytest -s --cov-report term-missing --cov=decli tests/
+    ./scripts/tests
 
 
 Contributing

@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+pr() {
+    poetry run python -m "$@"
+}
+
+pr pytest --cov-report term-missing --cov-report=xml:coverage.xml --cov=decli "${1:-tests}"
+pr black decli tests --check
+pr ruff decli/ tests/
+pr mypy decli/ tests/
