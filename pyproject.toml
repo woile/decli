@@ -11,12 +11,12 @@ python = ">=3.7"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^7.16"
-ipdb = "^0.13"
+ipdb = "^0.13.13"
 pytest = "^7.3.1"
 pytest-cov = "^4.0.0"
 black = "^23.3.0"
 mypy = "^1.2.0"
-codecov = "^2.1"
+codecov = "^2.1.13"
 ruff = "^0.0.263"
 
 [tool.ruff]
