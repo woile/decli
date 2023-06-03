@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.6.1 (2023-06-03)
+
+### Fix
+
+- commitizen bumps version in decli/__init_.py
+
 ## v0.6.0 (2023-04-28)
 
 ### Feat
