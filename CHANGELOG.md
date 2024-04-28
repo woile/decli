@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.6.2 (2024-04-28)
+
+### Fix
+
+- add missing build-system
+
 ## v0.6.1 (2023-06-03)
 
 ### Fix
