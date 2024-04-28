@@ -40,3 +40,7 @@ major_version_zero = true
 version_files = [
     "decli/__init__.py:__version__",
 ]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
