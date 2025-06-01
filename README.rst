@@ -688,7 +688,13 @@ Contributing
 
     poetry install
 
-3. Run tests
+3. Format
+
+::
+
+    ./scripts/format
+
+4. Run tests
 
 ::
 
