@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.6.3 (2025-06-01)
+
+### Refactor
+
+- update linter tools, python dependency and add types to application, remove black
+
 ## v0.6.2 (2024-04-28)
 
 ### Fix
