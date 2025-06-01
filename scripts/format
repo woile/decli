@@ -1,4 +1,4 @@
 #!/bin/sh -e
 
-ruff decli tests --fix
-black decli/ tests/
+ruff check --fix
+ruff format

@@ -7,28 +7,52 @@ license = "MIT"
 readme = 'README.rst'
 
 [tool.poetry.dependencies]
-python = ">=3.7"
+python = ">=3.9"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^7.16"
 ipdb = "^0.13.13"
 pytest = "^7.3.1"
 pytest-cov = "^4.0.0"
-black = "^23.3.0"
-mypy = "^1.2.0"
+mypy = "^1.16.0"
 codecov = "^2.1.13"
-ruff = "^0.0.263"
+ruff = "^0.11.5"
 
 [tool.ruff]
+required-version = ">=0.11.5"
 line-length = 88
-ignore = [
-    "E501",
-    "D1",
-    "D415",
-]
 
-[tool.ruff.isort]
+[tool.ruff.lint]
+select = [
+    # flake8-annotations
+    "ANN0",
+    "ANN2",
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # isort
+    "I",
+    # unsorted-dunder-all
+    "RUF022",
+    # unused-noqa
+    "RUF100",
+]
+ignore = ["E501", "D1", "D415"]
+
+[tool.ruff.lint.isort]
 known-first-party = ["decli", "tests"]
+
+[tool.mypy]
+files = ["decli", "tests"]
+disallow_untyped_decorators = true
+disallow_subclassing_any = true
+warn_return_any = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unused_configs = true
 
 [tool.commitizen]
 name = "cz_conventional_commits"
@@ -37,9 +61,7 @@ version_type = "pep440"
 version_provider = "poetry"
 update_changelog_on_bump = true
 major_version_zero = true
-version_files = [
-    "decli/__init__.py:__version__",
-]
+version_files = ["decli/__init__.py:__version__"]
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,9 +1,10 @@
 import argparse
 import textwrap
+
 from decli import cli
 
 
-def main_example():
+def main_example() -> argparse.ArgumentParser:
     """https://docs.python.org/3/library/argparse.html#example"""
     data = {
         "description": "Process some integers.",
@@ -29,7 +30,7 @@ def main_example():
     return parser
 
 
-def complete_example():
+def complete_example() -> argparse.ArgumentParser:
     data = {
         "prog": "cz",
         "formatter_class": argparse.RawDescriptionHelpFormatter,
@@ -82,7 +83,7 @@ def complete_example():
     return parser
 
 
-def name_or_flags():
+def name_or_flags() -> dict:
     """https://docs.python.org/3/library/argparse.html#name-or-flags"""
     data = {
         "prog": "sti",
@@ -91,7 +92,7 @@ def name_or_flags():
     return data
 
 
-def compose_clis_using_parents():
+def compose_clis_using_parents() -> list[argparse.ArgumentParser]:
     """
     Sometimes, several cli share a common set of arguments.
     Rather than repeating the definitions of these arguments,
@@ -115,7 +116,7 @@ def compose_clis_using_parents():
     return parents
 
 
-def using_formatter_class():
+def using_formatter_class() -> dict:
     """https://docs.python.org/3/library/argparse.html#formatter-class"""
     data = {
         "prog": "PROG",
@@ -133,7 +134,7 @@ def using_formatter_class():
     return data
 
 
-def prefix_chars():
+def prefix_chars() -> dict:
     data = {
         "prog": "PROG",
         "prefix_chars": "+",
@@ -142,7 +143,7 @@ def prefix_chars():
     return data
 
 
-def grouping_arguments():
+def grouping_arguments() -> dict:
     data = {
         "prog": "mycli",
         "arguments": [
@@ -186,7 +187,7 @@ def grouping_arguments():
     return data
 
 
-def exclusive_group():
+def exclusive_group() -> dict:
     data = {
         "prog": "app",
         "arguments": [

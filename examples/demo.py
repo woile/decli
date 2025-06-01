@@ -1,4 +1,5 @@
 """Simple app example"""
+
 from decli import cli
 
 data = {
