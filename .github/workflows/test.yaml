@@ -30,7 +30,7 @@ jobs:
           virtualenvs-create: true
       - name: Install Dependencies
         run: |
-          poetry install --no-interaction
+          poetry install --all-groups --no-interaction
       - name: Test and Lint
         run: |
           ./scripts/test
